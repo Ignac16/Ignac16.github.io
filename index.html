@@ -70,6 +70,7 @@
       background: #f9f9f9;
       min-height: 80vh;
     }
+    .search-hide { display: none; }
     footer {
       background: #222;
       color: #fff;
@@ -97,17 +98,41 @@
       <li><a href="playlist_spain%20(1).m3u8">Channels</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
-    <form class="search-container" action="#" method="get" onsubmit="alert('Search is not yet implemented!'); return false;">
-      <input type="text" placeholder="Search..." name="search" aria-label="Search">
+    <form class="search-container" id="searchForm" action="#" method="get">
+      <input type="text" placeholder="Search..." name="search" aria-label="Search" id="searchInput">
       <button type="submit">Search</button>
     </form>
   </nav>
-  <main>
-    <h1>SPAIN STREAM 📺 </h1>
-    <p>An app to watch Movies & TV in any platform.</p>
+  <main id="mainContent">
+    <h1>Welcome to Ignac16's Site</h1>
+    <p>This is a sample homepage with a navigation menu.</p>
+    <h2>Sample Movie</h2>
+    <p>A classic movie description goes here. Demo content for search!</p>
+    <h2>Contact Information</h2>
+    <p>Email: ignaciosox@hotmail.com</p>
   </main>
   <footer>
     &copy; 2025 Ignac16. All rights reserved.
   </footer>
+  <script>
+    // Simple client-side filter for headings & paragraphs in main section
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const main = document.getElementById('mainContent');
+      const elements = main.querySelectorAll('h1, h2, p');
+      if (!query) {
+        elements.forEach(el => el.classList.remove('search-hide'));
+        return;
+      }
+      elements.forEach(el => {
+        if (el.textContent.toLowerCase().includes(query)) {
+          el.classList.remove('search-hide');
+        } else {
+          el.classList.add('search-hide');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
