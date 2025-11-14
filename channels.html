@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Channels | Ignac16</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --nav-bg: #222;
+      --nav-hover: #444;
+      --accent: #4963f5;
+      --accent-dark: #283593;
+    }
+    body { font-family: 'Dosis', Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    header { background: var(--nav-bg); color: #fff; }
+    .nav-wrap {
+      max-width: 1100px; margin: 0 auto; display: flex; align-items: center; padding: 0.25rem 1rem; gap: 1rem; flex-wrap: wrap;
+    }
+    .brand { color: #fff; font-weight: 600; font-size: 1.05rem; text-decoration: none; padding: 12px 8px; }
+    nav { display: flex; align-items: center; flex: 1; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.25rem; align-items: center; }
+    nav ul li a { display: block; color: #fff; padding: 12px 14px; text-decoration: none; border-radius: 4px; }
+    nav ul li a:hover, nav ul li a.active { background: var(--nav-hover); }
+    .search-container { margin-left: auto; display:flex; align-items:center; gap:0; }
+    .search-container input { padding: 8px 12px; border: none; border-radius: 4px 0 0 4px; font-size: 15px; }
+    .search-container button { padding: 8px 12px; border: none; border-radius: 0 4px 4px 0; background: var(--accent); color:#fff; cursor:pointer; }
+
+    main { max-width:1100px; margin: 1.5rem auto; padding: 1rem; background:#fff; border-radius:6px; }
+    .channels-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.25rem; }
+    .channel-card { background:#fff; border-radius:8px; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.06); text-align:center; }
+    .channel-card img { width:100%; max-width:170px; border-radius:6px; margin-bottom:0.75rem; }
+    .channel-title { font-weight:600; margin-bottom:0.25rem; }
+    .channel-desc { color:#555; font-size:0.95rem; }
+    .play-link { display:inline-block; margin-top:0.5rem; padding:8px 12px; background:var(--accent); color:#fff; border-radius:6px; text-decoration:none; }
+    footer { background:var(--nav-bg); color:#fff; text-align:center; padding:1rem; margin-top:1.5rem; }
+    @media (max-width:720px) { .nav-wrap { padding:0.5rem; } .search-container { width:100%; justify-content:flex-end; margin-top:0.5rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Ignac16</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="channels.html" class="active">Channels</a></li>
+          <li><a href="playlist_spain%20(1).m3u8">Playlist</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <form class="search-container" id="searchFormChannels" action="#" onsubmit="return false;">
+        <input id="searchInputChannels" type="text" placeholder="Search channels..." aria-label="Search channels">
+        <button id="searchBtnChannels" type="button">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <main id="channelsContent">
+    <h1>Channels</h1>
+    <p>Browse available channels below. Click "Play" to open the playlist item.</p>
+    <div class="channels-grid">
+      <div class="channel-card">
+        <img src="https://placehold.co/170x120/png?text=Channel+1" alt="Channel 1">
+        <div class="channel-title">Channel One</div>
+        <div class="channel-desc">Live sports and news.</div>
+        <a class="play-link" href="playlist_spain%20(1).m3u8">Play</a>
+      </div>
+      <div class="channel-card">
+        <img src="https://placehold.co/170x120/png?text=Channel+2" alt="Channel 2">
+        <div class="channel-title">Channel Two</div>
+        <div class="channel-desc">Movies and entertainment.</div>
+        <a class="play-link" href="playlist_spain%20(1).m3u8">Play</a>
+      </div>
+      <div class="channel-card">
+        <img src="https://placehold.co/170x120/png?text=Channel+3" alt="Channel 3">
+        <div class="channel-title">Channel Three</div>
+        <div class="channel-desc">Music and culture.</div>
+        <a class="play-link" href="playlist_spain%20(1).m3u8">Play</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>&copy; 2025 Ignac16. All rights reserved.</footer>
+
+  <script>
+    function runChannelsSearch() {
+      const q = (document.getElementById('searchInputChannels').value || '').trim().toLowerCase();
+      const cards = document.querySelectorAll('.channel-card');
+      if (!q) { cards.forEach(c => c.style.display='block'); return; }
+      cards.forEach(c => {
+        const text = (c.innerText || '').toLowerCase();
+        c.style.display = text.includes(q) ? 'block' : 'none';
+      });
+    }
+    document.getElementById('searchBtnChannels').addEventListener('click', runChannelsSearch);
+    document.getElementById('searchInputChannels').addEventListener('keydown', function(e){ if(e.key==='Enter'){ runChannelsSearch(); e.preventDefault(); } });
+  </script>
+</body>
+</html>
