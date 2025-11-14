@@ -1,4 +1,4 @@
 ## Spain Stream 📺
 
-### A big app to watch TV & Movies
+### A big app to watch TV.
 
