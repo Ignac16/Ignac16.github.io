@@ -6,128 +6,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --nav-bg: #222;
+      --nav-hover: #444;
+      --accent: #4963f5;
+      --accent-dark: #283593;
+    }
     body { font-family: 'Dosis', Arial, sans-serif; margin: 0; padding: 0; }
-    nav {
-      background-color: #222;
+    header { background: var(--nav-bg); color: #fff; }
+    .nav-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      padding: 0 1rem;
+      padding: 0.25rem 1rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
-    nav ul {
-      list-style-type: none;
-      margin: 0; 
-      padding: 0;
-      display: flex;
-      flex: 1;
-    }
-    nav ul li {
-      flex: none;
-    }
-    nav ul li a {
-      display: block;
-      color: #fff;
-      text-align: center;
-      padding: 16px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    nav ul li a:hover {
-      background-color: #444;
-    }
-    .search-container {
-      display: flex;
-      align-items: center;
-      margin-left: auto;
-    }
-    .search-container input[type="text"] {
-      font-family: 'Dosis', Arial, sans-serif;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 4px 0 0 4px;
-      outline: none;
-      font-size: 16px;
-      background-color: #fff;
-      color: #222;
-    }
-    .search-container button {
-      padding: 8px 14px;
-      border: none;
-      border-radius: 0 4px 4px 0;
-      background: #4963f5;
-      color: #fff;
-      font-weight: bold;
-      font-family: 'Dosis', Arial, sans-serif;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .search-container button:hover {
-      background: #283593;
-    }
-    main {
-      padding: 2rem;
-      background: #f9f9f9;
-      min-height: 80vh;
-    }
-    .search-hide { display: none; }
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-    }
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        width: 100%;
-      }
-      .search-container {
-        margin: 1rem auto 1rem 0;
-        width: 100%;
-        justify-content: flex-end;
-      }
-    }
+    .brand { color: #fff; font-weight: 600; font-size: 1.05rem; text-decoration: none; padding: 12px 8px; }
+    nav { display: flex; align-items: center; flex: 1; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.25rem; align-items: center; }
+    nav ul li a { display: block; color: #fff; padding: 12px 14px; text-decoration: none; border-radius: 4px; }
+    nav ul li a:hover, nav ul li a.active { background: var(--nav-hover); }
+    .search-container { margin-left: auto; display:flex; align-items:center; gap:0; }
+    .search-container input { padding: 8px 12px; border: none; border-radius: 4px 0 0 4px; font-size: 15px; }
+    .search-container button { padding: 8px 12px; border: none; border-radius: 0 4px 4px 0; background: var(--accent); color:#fff; cursor:pointer; }
+
+    main { max-width:1100px; margin: 1.5rem auto; padding: 1rem; background:#f9f9f9; min-height: 60vh; border-radius:6px; }
+    .search-hide { display: none !important; }
+    footer { background:var(--nav-bg); color:#fff; text-align:center; padding:1rem; margin-top:1.5rem; }
+    @media (max-width:720px) { .nav-wrap { padding:0.5rem; } .search-container { width:100%; justify-content:flex-end; margin-top:0.5rem; } }
   </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="channels.html">Channels</a></li>
-      <li><a href="extras.html">Extras</a></li>
-    </ul>
-    <form class="search-container" id="searchForm" action="#" method="get">
-      <input type="text" placeholder="Search..." name="search" aria-label="Search" id="searchInput">
-      <button type="submit">Search</button>
-    </form>
-  </nav>
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Ignac16</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="channels.html">Channels</a></li>
+          <li><a href="playlist_spain%20(1).m3u8">Playlist</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <form class="search-container" id="searchForm" action="#" method="get" onsubmit="return false;">
+        <input id="searchInput" name="search" type="text" placeholder="Search site..." aria-label="Search">
+        <button id="searchBtn" type="button">Search</button>
+      </form>
+    </div>
+  </header>
+
   <main id="mainContent">
     <h1>Welcome to Spain TV</h1>
-    <p>A place when you combine Family and Entretainment.</p>
+    <p>A place when you combine Family and Entertainment.</p>
+
+    <h2>Sample Movie</h2>
+    <p>A classic movie description goes here. Demo content for search!</p>
+
+    <h2>Contact Information</h2>
+    <p>Email: ignaciosox@hotmail.com</p>
   </main>
-  <footer>
-    &copy; 2025 Ignac16. All rights reserved.
-  </footer>
+
+  <footer>&copy; 2025 Ignac16. All rights reserved.</footer>
+
   <script>
-    // Simple client-side filter for headings & paragraphs in main section
-    document.getElementById('searchForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+    // site-wide page filter for this page
+    function runSearch() {
+      const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
       const main = document.getElementById('mainContent');
-      const elements = main.querySelectorAll('h1, h2, p');
-      if (!query) {
-        elements.forEach(el => el.classList.remove('search-hide'));
-        return;
-      }
-      elements.forEach(el => {
-        if (el.textContent.toLowerCase().includes(query)) {
-          el.classList.remove('search-hide');
-        } else {
-          el.classList.add('search-hide');
-        }
+      const items = main.querySelectorAll('h1,h2,p,li');
+      if (!q) { items.forEach(i => i.classList.remove('search-hide')); return; }
+      items.forEach(i => {
+        i.textContent.toLowerCase().includes(q) ? i.classList.remove('search-hide') : i.classList.add('search-hide');
       });
-    });
+    }
+    document.getElementById('searchBtn').addEventListener('click', runSearch);
+    document.getElementById('searchInput').addEventListener('keydown', function(e){ if (e.key === 'Enter') { runSearch(); e.preventDefault(); } });
   </script>
 </body>
 </html>
