@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>La 2 | Channels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nav-bg: #222;
+      --nav-hover: #444;
+      --accent: #4963f5;
+    }
+    body { font-family:'Dosis', Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
+    header { background:var(--nav-bg); color:#fff; }
+    .nav-wrap { max-width:1100px; margin:0 auto; display:flex; align-items:center; padding:.25rem 1rem; gap:1rem; flex-wrap:wrap; }
+    .brand { color:#fff; font-weight:600; text-decoration:none; padding:12px 8px; }
+    nav { flex:1; }
+    nav ul { list-style:none; display:flex; gap:.25rem; margin:0; padding:0; align-items:center; }
+    nav ul li a { color:#fff; padding:12px 14px; text-decoration:none; display:block; border-radius:4px; }
+    nav ul li a:hover, nav ul li a.active { background:var(--nav-hover); }
+    .search-container { margin-left:auto; display:flex; align-items:center; }
+    main { max-width:1100px; margin:1.5rem auto; padding:1rem; background:#fff; border-radius:6px; }
+    footer { background:var(--nav-bg); color:#fff; text-align:center; padding:1rem; margin-top:1.25rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="../index.html">Spain TV</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../channels.html">Channels</a></li>
+          <li><a href="../extras.html">Extras</a></li>
+          <li><a href="#" class="active">La 2</a></li>
+        </ul>
+      </nav>
+      <form class="search-container" id="searchFormLA2" action="#" onsubmit="return false;">
+        <input id="searchInputLA1" type="text" placeholder="Search LA2..." aria-label="Search LA2">
+        <button id="searchBtnLA1" type="button">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <main id="la1Content">
+    <h1>La 2 Channel</h1>
+    <p>La 2 Channel:</p>
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width:100%;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+        webkitAllowFullScreen mozallowfullscreen allowfullscreen 
+        width="640" height="360" frameborder="0" allow="autoplay" 
+        src="https://anym3u8player.com/tv/p.php?url=https%3A%2F%2Frtvelivestream.rtve.es%2Frtvesec%2Fla2%2Fla2_main_dvr.m3u8">
+    </iframe>
+</div>
+    <section>
+      <h2>Now Playing:</h2>
+      <p>La 2 STREAM</p>
+    </section>
+  </main>
+
+  <footer>&copy; 2025 Ignac16. All rights reserved.</footer>
+
+  <script>
+    function runLA1Search() {
+      const q = (document.getElementById('searchInputLA1').value || '').trim().toLowerCase();
+      const elems = document.querySelectorAll('#la1Content h1,#la1Content h2,#la1Content p');
+      if (!q) { elems.forEach(e => e.style.display = ''); return; }
+      elems.forEach(e => e.textContent.toLowerCase().includes(q) ? e.style.display = '' : e.style.display = 'none');
+    }
+    document.getElementById('searchBtnLA1').addEventListener('click', runLA1Search);
+    document.getElementById('searchInputLA1').addEventListener('keydown', function(e){ if (e.key === 'Enter'){ runLA1Search(); e.preventDefault(); } });
+  </script>
+</body>
+</html>
